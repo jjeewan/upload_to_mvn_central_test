@@ -1,4 +1,4 @@
-package io.github.jitendrakumar2006;
+package io.github.jjeewan;
 
 public class Main {
     public static void main(String[] args) {
