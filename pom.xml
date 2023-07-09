@@ -6,7 +6,7 @@
     <packaging>jar</packaging>
     <version>0.1.0-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>Java hello world</description>
+    <description>Upload to maven central testing</description>
     <url>https://github.com/jjeewan/upload_to_mvn_central_test</url>
     <licenses>
         <license>
