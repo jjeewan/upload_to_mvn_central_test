@@ -1,110 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Copyright (c) 2023, Oracle and/or its affiliates.
-Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
--->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.oracle.cloud.spring</groupId>
-    <artifactId>spring-cloud-oci</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>io.github.jjeewan</groupId>
+    <artifactId>upload_to_mvn_central_test</artifactId>
+    <packaging>jar</packaging>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Java hello world</description>
+    <url>https://github.com/jjeewan/upload_to_mvn_central_test</url>
     <licenses>
         <license>
-            <name>The Universal Permissive License (UPL), Version 1.0</name>
-            <url>https://oss.oracle.com/licenses/upl/</url>
-            <distribution>repo</distribution>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-    <modules>
-        <module>spring-cloud-oci-core</module>
-        <module>spring-cloud-oci-autoconfigure</module>
-        <module>spring-cloud-oci-samples</module>
-        <module>spring-cloud-oci-starters</module>
-        <module>spring-cloud-oci-storage</module>
-        <module>spring-cloud-oci-notification</module>
-        <module>spring-cloud-oci-logging</module>
-        <module>docs</module>
-    </modules>
+    <developers>
+        <developer>
+            <id>jjeewan</id>
+            <name>Jeewan</name>
+            <email>jeewan.jyoti@oracle.com</email>
+        </developer>
+    </developers>
     <properties>
-        <tomcat.version>8.0.33</tomcat.version>
-        <javax-mail.version>1.5.5</javax-mail.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <javax.activation.version>1.2.0</javax.activation.version>
-        <spring-cloud-commons.version>3.1.0</spring-cloud-commons.version>
-        <testcontainers.version>1.17.2</testcontainers.version>
-        <spotless.version>2.22.0</spotless.version>
-        <awssdk.version>2.17.172</awssdk.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
     <dependencies>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.33</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <!-- <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-	</build> -->
-
     <build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.1</version>
-				<configuration>
-					<skip>false</skip>
-					<links>
-						<link>https://docs.oracle.com/javase/8/docs/api/</link>
-						<link>https://javaee.github.io/javaee-spec/javadocs/</link>
-						<link>https://fasterxml.github.io/jackson-core/javadoc/2.8/</link>
-						<link>https://docs.spring.io/spring/docs/5.3.x/javadoc-api/</link>
-					</links>
-					<author>true</author>
-					<header>${project.name}</header>
-					<reportOutputDirectory>${project.build.directory}/site/${project.version}/apidocs</reportOutputDirectory>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+        <finalName>${project.groupId}:${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.2.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.5.0</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <scm>
+        <url>https://github.com/jjeewan/upload_to_mvn_central_test</url>
+        <connection>scm:git:https://github.com/jjeewan/upload_to_mvn_central_test.git</connection>
+        <developerConnection>scm:git:https://github.com/jjeewan/upload_to_mvn_central_test.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
     <profiles>
         <profile>
-			<id>docs</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<configuration>
-							<skip>false</skip>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
+            <id>ci-cd</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.13</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
+                            <autoReleaseAfterClose>${env.AUTO_RELEASE_AFTER_CLOSE}</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.5.3</version>
+                        <configuration>
+                            <tagNameFormat>@{project.version}</tagNameFormat>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>default</id>
+                                <goals>
+                                    <goal>perform</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
-
 </project>

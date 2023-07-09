@@ -1,0 +1,27 @@
+# Eclipse
+.repository
+.project
+.settings
+changes.txt
+logs/
+/.DS_Store
+.classpath
+!platform/sm/dist
+.pydevproject
+
+# Netbeans
+nb-configuration.xml
+**/nbproject
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
