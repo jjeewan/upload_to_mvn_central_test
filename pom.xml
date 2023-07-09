@@ -4,7 +4,7 @@
     <groupId>io.github.jjeewan</groupId>
     <artifactId>upload_to_mvn_central_test</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.2</version>
+    <version>0.1.2-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Upload to maven central testing</description>
     <url>https://github.com/jjeewan/upload_to_mvn_central_test</url>
