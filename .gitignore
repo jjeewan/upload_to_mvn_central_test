@@ -24,4 +24,4 @@ nb-configuration.xml
 # Maven
 log/
 target/
-
+ocibuild.conf
