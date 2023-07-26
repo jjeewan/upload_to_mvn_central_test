@@ -52,6 +52,7 @@ jobs:
         run: |
           mvn -B -U \
             -Pci-cd \
+            --show-version \
             release:prepare \
             release:perform \
             javadoc:jar \
